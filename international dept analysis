@@ -1,0 +1,17 @@
+
+--total amount of debt owed by countries
+select round(sum(debt)/1000000,2) 
+from international_debt;
+--county with highest amount ofdebt
+select country_name, sum(debt) as totaldebt
+from international_debt
+group by country_name
+order by totaldebt desc limit 1;
+-- average amount of debt across indicators
+select indicator_code as debt_indicator,
+       indicator_name,
+	   avg(debt) as avg_debt
+from international_debt
+group by debt_indicator,indicator_name
+order by avg_debt deiksc
+limit 10;
